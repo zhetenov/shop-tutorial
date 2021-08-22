@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,8 @@ class HomeController extends Controller
 
     public function productDetail(Product $product)
     {
-        return view('layouts.detail', compact('product'));
+        $comments = Comment::where('product_id', $product->id)
+        ->get();
+        return view('layouts.detail', compact('product', 'comments'));
     }
 }
