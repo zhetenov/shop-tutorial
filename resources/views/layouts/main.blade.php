@@ -20,6 +20,31 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
+                    <h3 class="card-title">Quick Example</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="card-body">
+                        <form class="form-inline ml-3" method="get" action="{{ route('welcome') }}">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control form-control-navbar" type="search" name="q" placeholder="Search" aria-label="Search">
+
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Искать</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+
+
+                </form>
+            </div>
+
+
+            <div class="card">
+                <div class="card-header">
                     <h3 class="card-title">Все продукты</h3>
 
                     <div class="card-tools">
@@ -36,22 +61,20 @@
                         @foreach($products as $product)
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="{{ $product['image_url'] }}" alt="Product Image" class="img-size-50">
+                                    <img src="{{ $product->image_url }}" alt="Product Image" class="img-size-50">
                                 </div>
                                 <div class="product-info">
-                                    <a href="{{ route('detail', $product['id']) }}" class="product-title">
-                                        {{ $product['title'] }}
-                                        <span class="badge badge-warning float-right">{{ $product['price'] }}</span>
+                                    <a href="{{ route('detail', $product->id) }}" class="product-title">
+                                        {{ $product->title }}
+                                        <span class="badge badge-warning float-right">{{ $product->price }}</span>
                                     </a>
-                                    <span class="product-description">{{ $product['description'] }}</span>
+                                    <span class="product-description">{{ $product->description }}</span>
                                 </div>
                             </li>
                         @endforeach
                     </ul>
 
-                    @if(empty($products))
-                        Пусто
-                    @endif
+
                 </div>
             </div>
 
