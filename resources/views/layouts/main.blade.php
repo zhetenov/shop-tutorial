@@ -36,10 +36,10 @@
                         @foreach($products as $product)
                             <li class="item">
                                 <div class="product-img">
-                                    <img src="template/dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                    <img src="{{ $product['image_url'] }}" alt="Product Image" class="img-size-50">
                                 </div>
                                 <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">
+                                    <a href="{{ route('detail', $product['id']) }}" class="product-title">
                                         {{ $product['title'] }}
                                         <span class="badge badge-warning float-right">{{ $product['price'] }}</span>
                                     </a>
@@ -54,6 +54,8 @@
                     @endif
                 </div>
             </div>
+
         </section>
     </div>
+
 @endsection

@@ -13,4 +13,9 @@ class HomeController extends Controller
 
         return view('layouts.main', compact('products'));
     }
+
+    public function productDetail(Product $product)
+    {
+        return view('layouts.detail', compact('product'));
+    }
 }

@@ -15,6 +15,17 @@
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
+
+            @if(!\Illuminate\Support\Facades\Auth::check())
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('loginPage') }}" class="nav-link">Войти в систему</a>
+                </li>
+            @else
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ route('logout') }}" class="nav-link">Выйти</a>
+                </li>
+            @endif
+
         </ul>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -28,7 +39,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('welcome') }}" class="nav-link active">
                             <i class="nav-icon fa fa-list"></i>
                             <p>
                                 Главная
