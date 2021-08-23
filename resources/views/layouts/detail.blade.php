@@ -18,7 +18,6 @@
         </section>
     <section class="content">
 
-        <!-- Default box -->
         <div class="card card-solid">
             <div class="card-body">
                 <div class="row">
@@ -55,7 +54,7 @@
                                 Add to Wishlist
                             </div>
 
-                            <form action="{{ route('addComment', ['user_id'=>Auth::id(), 'product_id'=>$product->id]) }}" method="get">
+                            <form action="{{ route('addComment', ['product'=>$product->id]) }}" method="post">
                                 @csrf
                                 <div class="input-group mt-3">
                                     <input type="text" class="form-control" placeholder="Напишите коммент" name="comment">

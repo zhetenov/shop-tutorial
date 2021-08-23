@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class CommentController extends Controller
 {
-    public function addComment(Request $request, $product_id, $user_id)
+    public function addComment(CommentRequest $request, Product $product)
     {
-        $comment = Comment::create([
-            'product_id'    => $product_id,
-            'user_id'       => $user_id,
-            'text'          => $request->get('comment')
+
+         Comment::create([
+            'user_id'       => Auth::id(),
+            'product_id'    => $product->id,
+            'text'          => $request->get('comment'),
         ]);
-        $comment->save();
 
         return redirect()->back();
     }
